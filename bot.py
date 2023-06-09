@@ -6,11 +6,13 @@ from datetime import datetime, time
 import asyncio
 import icecream as debug
 
+import config
+
 import gatito as gt
 
 
 def run_discord_bot():
-    TOKEN = "MTExMjg3ODA0NDI3MzcwNTAzMQ.G8T4_Z.9KpmgOTIw1ttApIxmzO6tADmKtDFbYQg0_B3_Q"
+    TOKEN = config.TOKEN
 
     intents = discord.Intents.default()
     intents.message_content = True
