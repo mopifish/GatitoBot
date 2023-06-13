@@ -8,6 +8,8 @@
 # RELEASE: V 1.0.0
 # TODO: Consider mapping function calls to possible dict responses?
 # TODO: Tidy up bot.py, and consider chaning the bot.py > gatito hierarchy
+# TODO: shrink gifs
+# FIXME: actions like !sleep dont update state until after the gif has sent. Consider removing actions list and decoupling these two events
 # --- COMMANDS ---
 # - Wakeup command (send someone messages till they respond)
 # - Announce command
@@ -58,7 +60,7 @@ RESPONSES = {
     "spit": ["💦💦💦"],
     "punch": ["👊💥💥"],
     "slap": ["🫲💥💥"],
-    "kiss": ["media/cat-kiss-kiss-cat.gif"],
+    "kiss": ["media/kiss.gif"],
     "dance": ["media/dance.gif"],
     "pet": ["media/normal_pet.gif", "media/fast_pet.gif", "media/slow_pet.gif", "media/squishy_pet.gif"],
     "sniff": ["media/sniff.gif"],
@@ -121,7 +123,7 @@ class Gatito:
             embed = self.get_status_embed()
             responses.append(embed)
 
-        if self.state == States.DEAD:
+        elif self.state == States.DEAD:
             # Responds with a random "dead" gif if any command is called
             if command[0] in COMMANDS["wakeup"]:
                 responses.append(random.choice(RESPONSES["dead"]))
