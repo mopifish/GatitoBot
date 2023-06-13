@@ -125,7 +125,6 @@ class Gatito:
             # Responds with a random "dead" gif if any command is called
             if command[0] in COMMANDS["wakeup"]:
                 responses.append(random.choice(RESPONSES["dead"]))
-                actions.append((self.set_state, States.SLEEPING))
             elif command[0] in COMMANDS["resurrect"]:
                 responses.append("🪄✨💖✨💖")
                 responses.append("💢GROOUUAHHHHHHH💢")
